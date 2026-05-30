@@ -2,6 +2,8 @@ package com.cleanroute.entity;
 
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.JoinColumn;
 
 @Entity
 @Table(name = "aqi_history")
@@ -10,6 +12,10 @@ public class AQIHistory {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @ManyToOne
+    @JoinColumn(name = "route_id")
+    private SavedRoute route;
 
     private int aqi;
 
@@ -46,5 +52,12 @@ public class AQIHistory {
             LocalDateTime recordedAt) {
 
         this.recordedAt = recordedAt;
+    }
+    public SavedRoute getRoute() {
+        return route;
+    }
+
+    public void setRoute(SavedRoute route) {
+        this.route = route;
     }
 }
