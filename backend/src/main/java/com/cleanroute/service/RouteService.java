@@ -12,15 +12,20 @@ public class RouteService {
 
     @Value("${ors.api.key}")
     private String apiKey;
-
+    private final AQIService aqiService;
     private final RestClient restClient = RestClient.create();
 
     private final PollutionScoreService pollutionScoreService;
 
     public RouteService(
-            PollutionScoreService pollutionScoreService) {
+            PollutionScoreService pollutionScoreService,
+            AQIService aqiService) {
 
-        this.pollutionScoreService = pollutionScoreService;
+        this.pollutionScoreService =
+                pollutionScoreService;
+
+        this.aqiService =
+                aqiService;
     }
 
     public RouteResponse getRoute(
@@ -65,7 +70,10 @@ public class RouteService {
             double durationMinutes =
                     durationSeconds / 60.0;
 
-            int aqi = 2;
+            int aqi =
+                    aqiService.getAQI(
+                            startLat,
+                            startLon);
 
             double pollutionScore =
                     pollutionScoreService.calculateScore(

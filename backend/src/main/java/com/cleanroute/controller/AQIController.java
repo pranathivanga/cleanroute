@@ -14,7 +14,10 @@ public class AQIController {
     }
 
     @GetMapping
-    public String getAQI() {
-        return aqiService.getAQI();
+    public int getAQI(
+            @RequestParam("lat") double lat,
+            @RequestParam("lon") double lon) {
+
+        return aqiService.getAQI(lat, lon);
     }
 }

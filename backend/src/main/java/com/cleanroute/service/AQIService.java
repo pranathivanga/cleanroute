@@ -1,5 +1,7 @@
 package com.cleanroute.service;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClient;
@@ -12,15 +14,39 @@ public class AQIService {
 
     private final RestClient restClient = RestClient.create();
 
-    public String getAQI() {
+    public int getAQI(
+            double lat,
+            double lon) {
 
         String url =
-                "http://api.openweathermap.org/data/2.5/air_pollution?lat=17.3850&lon=78.4867&appid="
+                "http://api.openweathermap.org/data/2.5/air_pollution?lat="
+                        + lat
+                        + "&lon="
+                        + lon
+                        + "&appid="
                         + apiKey;
 
-        return restClient.get()
+        String response = restClient.get()
                 .uri(url)
                 .retrieve()
                 .body(String.class);
+
+        try {
+
+            ObjectMapper mapper =
+                    new ObjectMapper();
+
+            JsonNode root =
+                    mapper.readTree(response);
+
+            return root.path("list")
+                    .get(0)
+                    .path("main")
+                    .path("aqi")
+                    .asInt();
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 }
