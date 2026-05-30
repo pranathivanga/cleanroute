@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="015acc68-6c37-4d25-8a4f-8f4abc4d1255" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/backend/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/resources/application.properties" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="NextEditCompletionFeaturesState">
+    <decayedCancelled>
+      <entry key="MS100" value="1.0001077518306019" />
+      <entry key="MS500" value="1.160873655912659" />
+      <entry key="S2" value="1.6333191713187492" />
+      <entry key="S5" value="1.8385779756308547" />
+      <entry key="S10" value="2.008744020592168" />
+      <entry key="S30" value="2.9498566613370905" />
+      <entry key="S60" value="3.921251302434187" />
+      <entry key="M2" value="4.760446366639453" />
+      <entry key="M5" value="5.451939143455399" />
+      <entry key="M10" value="5.795713729081665" />
+      <entry key="M15" value="5.997347506179896" />
+      <entry key="M30" value="6.339747964376732" />
+      <entry key="H1" value="6.612525055298245" />
+      <entry key="H2" value="6.8073809371488" />
+      <entry key="H4" value="7.341412204919355" />
+      <entry key="D1" value="13.44217079829421" />
+      <entry key="W1" value="17.192130655295358" />
+    </decayedCancelled>
+    <decayedSelected>
+      <entry key="MS100" value="1.329105064236708E-244" />
+      <entry key="MS500" value="1.6776905665663725E-49" />
+      <entry key="S2" value="6.399970404006107E-13" />
+      <entry key="S5" value="1.3257791545685734E-5" />
+      <entry key="S10" value="0.0036411250384579936" />
+      <entry key="S30" value="0.15384328013537465" />
+      <entry key="S60" value="0.3922286069824263" />
+      <entry key="M2" value="0.6262815716452355" />
+      <entry key="M5" value="0.8292927203580722" />
+      <entry key="M10" value="0.9106551050524408" />
+      <entry key="M15" value="0.9395126190623743" />
+      <entry key="M30" value="0.9692845913674552" />
+      <entry key="H1" value="0.9845225194821371" />
+      <entry key="H2" value="0.9922310816952558" />
+      <entry key="H4" value="0.9961079668867505" />
+      <entry key="D1" value="0.9993502733665296" />
+      <entry key="W1" value="0.9999071560535102" />
+    </decayedSelected>
+    <decayedShown>
+      <entry key="MS100" value="1.0775183060188651E-4" />
+      <entry key="MS500" value="0.16087370459588438" />
+      <entry key="S2" value="0.6481723056401725" />
+      <entry key="S5" value="1.0231288483451322" />
+      <entry key="S10" value="1.4335463415176743" />
+      <entry key="S30" value="2.820128874151047" />
+      <entry key="S60" value="4.140829936059869" />
+      <entry key="M2" value="5.2877775062883465" />
+      <entry key="M5" value="6.237574643340034" />
+      <entry key="M10" value="6.683702553522004" />
+      <entry key="M15" value="6.921520048721655" />
+      <entry key="M30" value="7.30121715325076" />
+      <entry key="H1" value="7.593092765779473" />
+      <entry key="H2" value="7.797619298808074" />
+      <entry key="H4" value="8.336503102513563" />
+      <entry key="D1" value="14.44131194868869" />
+      <entry key="W1" value="18.192004458055656" />
+    </decayedShown>
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="ProjectErrors" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2,
+  &quot;fromUser&quot;: false
+}</component>
+  <component name="ProjectId" id="3EOcFgudC0sL3kWtr22WxloZkxC" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "Spring Boot.CleanrouteApplication.executor": "Run",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
+    "git-widget-placeholder": "main",
+    "junie.onboarding.icon.badge.shown": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/admin/Desktop/cleanroute",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.0",
+    "to.speed.mode.migration.done": "true",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RunManager" selected="Spring Boot.CleanrouteApplication">
+    <configuration name="CleanrouteApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="cleanroute" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.cleanroute.CleanrouteApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Unnamed" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="cleanroute" />
+      <option name="SPRING_BOOT_MAIN_CLASS" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Spring Boot.CleanrouteApplication" />
+      <item itemvalue="Spring Boot.Unnamed" />
+    </list>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-30f59d01ecdd-37e91769500f-intellij.indexing.shared.core-IU-261.24374.151" />
+        <option value="bundled-js-predefined-d6986cc7102b-31caf2ab9e3c-JavaScript-IU-261.24374.151" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="015acc68-6c37-4d25-8a4f-8f4abc4d1255" name="Changes" comment="" />
+      <created>1780052954775</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1780052954775</updated>
+      <workItem from="1780052956439" duration="4173000" />
+      <workItem from="1780121843683" duration="1165000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
