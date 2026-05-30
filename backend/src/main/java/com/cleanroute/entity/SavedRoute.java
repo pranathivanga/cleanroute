@@ -1,31 +1,67 @@
 package com.cleanroute.entity;
 
 import jakarta.persistence.*;
-import lombok.*;
-
-import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "saved_routes")
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
 public class SavedRoute {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String source;
+    private String routeName;
 
-    private String destination;
+    private double startLat;
+    private double startLon;
 
-    private String travelMode;
+    private double endLat;
+    private double endLon;
 
-    private LocalDateTime createdAt;
+    public SavedRoute() {
+    }
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
+    public Long getId() {
+        return id;
+    }
+
+    public String getRouteName() {
+        return routeName;
+    }
+
+    public void setRouteName(String routeName) {
+        this.routeName = routeName;
+    }
+
+    public double getStartLat() {
+        return startLat;
+    }
+
+    public void setStartLat(double startLat) {
+        this.startLat = startLat;
+    }
+
+    public double getStartLon() {
+        return startLon;
+    }
+
+    public void setStartLon(double startLon) {
+        this.startLon = startLon;
+    }
+
+    public double getEndLat() {
+        return endLat;
+    }
+
+    public void setEndLat(double endLat) {
+        this.endLat = endLat;
+    }
+
+    public double getEndLon() {
+        return endLon;
+    }
+
+    public void setEndLon(double endLon) {
+        this.endLon = endLon;
+    }
 }
