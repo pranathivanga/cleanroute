@@ -1,11 +1,11 @@
 package com.cleanroute.service;
 
+import com.cleanroute.dto.RouteResponse;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClient;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.cleanroute.dto.RouteResponse;
 
 @Service
 public class RouteService {
@@ -14,6 +14,14 @@ public class RouteService {
     private String apiKey;
 
     private final RestClient restClient = RestClient.create();
+
+    private final PollutionScoreService pollutionScoreService;
+
+    public RouteService(
+            PollutionScoreService pollutionScoreService) {
+
+        this.pollutionScoreService = pollutionScoreService;
+    }
 
     public RouteResponse getRoute(
             double startLon,
@@ -57,9 +65,23 @@ public class RouteService {
             double durationMinutes =
                     durationSeconds / 60.0;
 
+            int aqi = 2;
+
+            double pollutionScore =
+                    pollutionScoreService.calculateScore(
+                            aqi,
+                            durationMinutes);
+
+            String healthRating =
+                    pollutionScoreService.getHealthRating(
+                            pollutionScore);
+
             return new RouteResponse(
                     distanceKm,
-                    durationMinutes);
+                    durationMinutes,
+                    aqi,
+                    pollutionScore,
+                    healthRating);
 
         } catch (Exception e) {
             throw new RuntimeException(e);
