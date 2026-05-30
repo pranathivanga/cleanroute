@@ -4,6 +4,8 @@ import com.cleanroute.entity.SavedRoute;
 import com.cleanroute.repository.SavedRouteRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class SavedRouteService {
 
@@ -15,5 +17,11 @@ public class SavedRouteService {
 
     public SavedRoute saveRoute(SavedRoute route) {
         return repository.save(route);
+    }
+    public List<SavedRoute> getAllRoutes() {
+        return repository.findAll();
+    }
+    public void deleteRoute(Long id) {
+        repository.deleteById(id);
     }
 }
