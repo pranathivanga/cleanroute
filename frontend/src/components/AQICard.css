@@ -1,0 +1,54 @@
+.aqi-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.aqi-ring {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.aqi-card-sm .aqi-ring { width: 80px; height: 80px; }
+.aqi-card-md .aqi-ring { width: 110px; height: 110px; }
+.aqi-card-lg .aqi-ring { width: 140px; height: 140px; }
+
+.aqi-svg {
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+}
+
+.aqi-track {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.06);
+  stroke-width: 8;
+}
+
+.aqi-progress {
+  fill: none;
+  stroke-width: 8;
+  stroke-linecap: round;
+  transition: stroke-dasharray 0.8s ease;
+  filter: drop-shadow(0 0 6px var(--aqi-color));
+}
+
+.aqi-value {
+  position: absolute;
+  font-size: var(--font-2xl);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.aqi-card-sm .aqi-value { font-size: var(--font-lg); }
+.aqi-card-lg .aqi-value { font-size: var(--font-3xl); }
+
+.aqi-label {
+  font-size: var(--font-sm);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}

@@ -5,18 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="015acc68-6c37-4d25-8a4f-8f4abc4d1255" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/cleanroute/controller/AQIHistoryController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/cleanroute/controller/RecommendationController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/cleanroute/dto/CleanTravelWindowResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/cleanroute/dto/RouteRecommendation.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/cleanroute/service/RecommendationService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/cleanroute/controller/WeatherController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/cleanroute/controller/WeatherController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/cleanroute/entity/AQIHistory.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/cleanroute/entity/AQIHistory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/cleanroute/entity/AQIRecord.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/cleanroute/entity/AQIRecord.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/cleanroute/repository/AQIHistoryRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/cleanroute/repository/AQIHistoryRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/cleanroute/service/AQIHistoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/cleanroute/service/AQIHistoryService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/cleanroute/service/WeatherService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/cleanroute/service/WeatherService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/cleanroute/dto/RouteOption.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/cleanroute/dto/RouteOption.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/cleanroute/service/AlternativeRouteService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/cleanroute/service/AlternativeRouteService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/cleanroute/service/RouteService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/cleanroute/service/RouteService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -184,7 +176,7 @@
       <updated>1780052954775</updated>
       <workItem from="1780052956439" duration="4173000" />
       <workItem from="1780121843683" duration="1165000" />
-      <workItem from="1780825111520" duration="2219000" />
+      <workItem from="1780825111520" duration="4477000" />
     </task>
     <servers />
   </component>

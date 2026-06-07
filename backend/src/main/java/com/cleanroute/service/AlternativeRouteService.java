@@ -21,8 +21,33 @@ public class AlternativeRouteService {
             double endLon,
             double endLat) {
 
-        System.out.println("Alternative route request received");
+        RouteOption route1 =
+                new RouteOption(
+                        "Fastest Route",
+                        7.6,
+                        10.8,
+                        4,
+                        48.5);
 
-        return List.of();
+        RouteOption route2 =
+                new RouteOption(
+                        "Cleaner Route",
+                        8.1,
+                        12.5,
+                        2,
+                        21.7);
+
+        RouteOption route3 =
+                new RouteOption(
+                        "Balanced Route",
+                        7.9,
+                        11.6,
+                        3,
+                        32.4);
+
+        return List.of(
+                route1,
+                route2,
+                route3);
     }
 }

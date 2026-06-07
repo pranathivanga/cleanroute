@@ -45,7 +45,7 @@ public class RouteService {
                 .header("Authorization", apiKey)
                 .retrieve()
                 .body(String.class);
-
+        System.out.println(response);
         try {
 
             ObjectMapper mapper = new ObjectMapper();

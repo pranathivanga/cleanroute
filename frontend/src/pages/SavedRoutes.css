@@ -1,0 +1,124 @@
+.saved-routes-actions {
+  margin-bottom: 1.5rem;
+}
+
+.add-route-form {
+  margin-bottom: 2rem;
+}
+
+.saved-route-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.form-group-wide {
+  grid-column: 1 / -1;
+}
+
+.form-submit-row {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 0.5rem;
+}
+
+.routes-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+}
+
+.empty-state {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 4rem 2rem;
+  color: var(--text-muted);
+  gap: 0.75rem;
+}
+
+.empty-state h3 {
+  font-size: var(--font-xl);
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.empty-state p {
+  font-size: var(--font-base);
+  max-width: 400px;
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: var(--font-lg);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 1.25rem;
+}
+
+.error-banner {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  border-radius: var(--radius-md);
+  padding: 0.875rem 1.25rem;
+  margin-bottom: 1.5rem;
+  color: #ef4444;
+  font-size: var(--font-base);
+}
+
+/* ===== TOAST ===== */
+.toast-notification {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  border-radius: var(--radius-md);
+  margin-bottom: 1.25rem;
+  font-size: var(--font-base);
+  font-weight: 500;
+}
+
+.toast-success {
+  background: rgba(34, 197, 94, 0.12);
+  border: 1px solid rgba(34, 197, 94, 0.3);
+  color: #22c55e;
+}
+
+.toast-error {
+  background: rgba(239, 68, 68, 0.12);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: #ef4444;
+}
+
+.toast-close {
+  margin-left: auto;
+  background: none;
+  color: inherit;
+  font-size: 1.25rem;
+  padding: 0 0.25rem;
+  opacity: 0.7;
+  transition: opacity var(--transition-fast);
+}
+
+.toast-close:hover {
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .routes-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .saved-route-form-grid {
+    grid-template-columns: 1fr;
+  }
+}
