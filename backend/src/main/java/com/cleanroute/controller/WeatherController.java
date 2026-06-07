@@ -19,4 +19,12 @@ public class WeatherController {
 
         return weatherService.getWeather(city);
     }
+    @GetMapping("/temp")
+    public double getTemp(
+            @RequestParam double lat,
+            @RequestParam double lon) {
+
+        return weatherService
+                .getTemperature(lat, lon);
+    }
 }

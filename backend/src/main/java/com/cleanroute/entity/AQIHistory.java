@@ -18,7 +18,11 @@ public class AQIHistory {
     private SavedRoute route;
 
     private int aqi;
+    private double temperature;
 
+    private int humidity;
+
+    private double windSpeed;
     private LocalDateTime recordedAt;
 
     public AQIHistory() {
@@ -26,9 +30,15 @@ public class AQIHistory {
 
     public AQIHistory(
             int aqi,
+            double temperature,
+            int humidity,
+            double windSpeed,
             LocalDateTime recordedAt) {
 
         this.aqi = aqi;
+        this.temperature = temperature;
+        this.humidity = humidity;
+        this.windSpeed = windSpeed;
         this.recordedAt = recordedAt;
     }
 
@@ -59,5 +69,28 @@ public class AQIHistory {
 
     public void setRoute(SavedRoute route) {
         this.route = route;
+    }
+    public double getTemperature() {
+        return temperature;
+    }
+
+    public void setTemperature(double temperature) {
+        this.temperature = temperature;
+    }
+
+    public int getHumidity() {
+        return humidity;
+    }
+
+    public void setHumidity(int humidity) {
+        this.humidity = humidity;
+    }
+
+    public double getWindSpeed() {
+        return windSpeed;
+    }
+
+    public void setWindSpeed(double windSpeed) {
+        this.windSpeed = windSpeed;
     }
 }

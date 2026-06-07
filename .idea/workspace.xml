@@ -5,9 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="015acc68-6c37-4d25-8a4f-8f4abc4d1255" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/cleanroute/controller/AQIHistoryController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/cleanroute/controller/RecommendationController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/cleanroute/dto/CleanTravelWindowResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/cleanroute/dto/RouteRecommendation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/com/cleanroute/service/RecommendationService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/cleanroute/controller/WeatherController.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/cleanroute/controller/WeatherController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/cleanroute/entity/AQIHistory.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/cleanroute/entity/AQIHistory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/cleanroute/entity/AQIRecord.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/cleanroute/entity/AQIRecord.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/cleanroute/repository/AQIHistoryRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/cleanroute/repository/AQIHistoryRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/cleanroute/service/AQIHistoryService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/cleanroute/service/AQIHistoryService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/cleanroute/service/WeatherService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/cleanroute/service/WeatherService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,25 +42,6 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="0.0" />
-      <entry key="MS500" value="0.0" />
-      <entry key="S2" value="6.034087664498404E-165" />
-      <entry key="S5" value="2.0523179621538937E-66" />
-      <entry key="S10" value="1.4325913451343666E-33" />
-      <entry key="S30" value="1.1273032896937796E-11" />
-      <entry key="S60" value="3.3575337521665805E-6" />
-      <entry key="M2" value="0.0018323574302429588" />
-      <entry key="M5" value="0.08039037924081645" />
-      <entry key="M10" value="0.2835343456393973" />
-      <entry key="M15" value="0.4318651428918553" />
-      <entry key="M30" value="0.698323793479951" />
-      <entry key="H1" value="1.4090485146041907" />
-      <entry key="H2" value="3.307228930754925" />
-      <entry key="H4" value="6.040250121600735" />
-      <entry key="D1" value="15.55002468626294" />
-      <entry key="W1" value="20.840064261233284" />
-    </decayedCancelled>
-    <decayedSelected>
       <entry key="MS100" value="1.0" />
       <entry key="MS500" value="1.0" />
       <entry key="S2" value="1.0" />
@@ -59,35 +49,54 @@
       <entry key="S10" value="1.0" />
       <entry key="S30" value="1.0" />
       <entry key="S60" value="1.0" />
-      <entry key="M2" value="1.0" />
-      <entry key="M5" value="1.000000000001809" />
-      <entry key="M10" value="1.000001798726661" />
-      <entry key="M15" value="1.0001875985068" />
-      <entry key="M30" value="1.0211585548177893" />
-      <entry key="H1" value="1.241165710825163" />
-      <entry key="H2" value="1.8394776514831501" />
-      <entry key="H4" value="2.581333876560783" />
-      <entry key="D1" value="3.6949376166323" />
-      <entry key="W1" value="3.9543535672704584" />
+      <entry key="M2" value="1.0000000001057443" />
+      <entry key="M5" value="1.0001022593229765" />
+      <entry key="M10" value="1.0101124198403908" />
+      <entry key="M15" value="1.0467930223946504" />
+      <entry key="M30" value="1.229865245112419" />
+      <entry key="H1" value="1.8084146641587806" />
+      <entry key="H2" value="3.5050614085844143" />
+      <entry key="H4" value="6.256927430641332" />
+      <entry key="D1" value="16.194179730803732" />
+      <entry key="W1" value="21.771257672626735" />
+    </decayedCancelled>
+    <decayedSelected>
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="0.0" />
+      <entry key="S2" value="0.0" />
+      <entry key="S5" value="1.8617876211652197E-174" />
+      <entry key="S10" value="1.3644733860230546E-87" />
+      <entry key="S30" value="1.109145078262134E-29" />
+      <entry key="S60" value="3.330382978370707E-15" />
+      <entry key="M2" value="5.7709470439181006E-8" />
+      <entry key="M5" value="0.0012720343397109451" />
+      <entry key="M10" value="0.035665654568462934" />
+      <entry key="M15" value="0.10837133180600333" />
+      <entry key="M30" value="0.33613183983337064" />
+      <entry key="H1" value="0.7120951130373054" />
+      <entry key="H2" value="1.3933128226572704" />
+      <entry key="H4" value="2.246576646686931" />
+      <entry key="D1" value="3.6103830941705692" />
+      <entry key="W1" value="3.9412976776293616" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="1.3383820416805743E-21" />
-      <entry key="MS500" value="6.688304238572334E-5" />
-      <entry key="S2" value="0.09043343036690787" />
-      <entry key="S5" value="0.3824120793671661" />
-      <entry key="S10" value="0.6183947601388341" />
-      <entry key="S30" value="0.8519653531298673" />
-      <entry key="S60" value="0.9230230477170747" />
-      <entry key="M2" value="0.96257080833041" />
-      <entry key="M5" value="1.064485017810889" />
-      <entry key="M10" value="1.2755363720768285" />
-      <entry key="M15" value="1.4267042745988523" />
-      <entry key="M30" value="1.7167422042970846" />
-      <entry key="H1" value="2.64847198659039" />
-      <entry key="H2" value="5.145256281097405" />
-      <entry key="H4" value="8.620462418368612" />
-      <entry key="D1" value="19.244637309018305" />
-      <entry key="W1" value="24.794363890895614" />
+      <entry key="MS100" value="0.8467453123625271" />
+      <entry key="MS500" value="0.9672763296139321" />
+      <entry key="S2" value="0.9917167307382933" />
+      <entry key="S5" value="0.9966784222188245" />
+      <entry key="S10" value="0.9983378297043665" />
+      <entry key="S30" value="0.9994456359721023" />
+      <entry key="S60" value="0.9997227795604682" />
+      <entry key="M2" value="0.9998614357219558" />
+      <entry key="M5" value="1.0012986112597373" />
+      <entry key="M10" value="1.0454650323041026" />
+      <entry key="M15" value="1.1545663586919903" />
+      <entry key="M30" value="1.5650858776652707" />
+      <entry key="H1" value="2.5195055799786896" />
+      <entry key="H2" value="4.89727338977982" />
+      <entry key="H4" value="8.502526793039253" />
+      <entry key="D1" value="19.80424507567856" />
+      <entry key="W1" value="25.712501563225207" />
     </decayedShown>
   </component>
   <component name="ProblemsViewState">
@@ -115,6 +124,7 @@
     "RequestMappingsPanelWidth1": "75",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
     "Spring Boot.CleanrouteApplication.executor": "Run",
     "codeWithMe.voiceChat.enabledByDefault": "false",
@@ -174,6 +184,7 @@
       <updated>1780052954775</updated>
       <workItem from="1780052956439" duration="4173000" />
       <workItem from="1780121843683" duration="1165000" />
+      <workItem from="1780825111520" duration="2219000" />
     </task>
     <servers />
   </component>

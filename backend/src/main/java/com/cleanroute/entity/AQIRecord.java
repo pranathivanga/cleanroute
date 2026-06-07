@@ -8,8 +8,7 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name = "aqi_records")
 @Getter
-@Setter
-@NoArgsConstructor
+@Setter@NoArgsConstructor
 @AllArgsConstructor
 public class AQIRecord {
 
