@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
-import { BookmarkCheck, Plus, MapPin, AlertCircle, CheckCircle } from 'lucide-react';
+import { BookmarkCheck, Plus, MapPin, AlertCircle, CheckCircle, Navigation } from 'lucide-react';
 import { routeService } from '../services/routeService';
 import useApi from '../hooks/useApi';
 import RouteCard from '../components/RouteCard';
+import LocationSearch from '../components/LocationSearch';
 import LoadingSpinner from '../components/LoadingSpinner';
 import './SavedRoutes.css';
 
@@ -13,42 +14,44 @@ export default function SavedRoutes() {
 
   const [showForm, setShowForm] = useState(false);
   const [toast, setToast] = useState(null);
-  const [form, setForm] = useState({
-    routeName: '',
-    startLat: '',
-    startLon: '',
-    endLat: '',
-    endLon: '',
-  });
+  const [routeName, setRouteName] = useState('');
+  const [source, setSource] = useState(null);
+  const [destination, setDestination] = useState(null);
+  const [formError, setFormError] = useState('');
 
   useEffect(() => {
     fetchRoutes();
   }, []);
 
-  const handleChange = (e) => {
-    setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-  };
-
   const handleAdd = async (e) => {
     e.preventDefault();
+    setFormError('');
+
+    if (!source) {
+      setFormError('Please select a valid source location.');
+      return;
+    }
+    if (!destination) {
+      setFormError('Please select a valid destination.');
+      return;
+    }
+
+    const name = routeName.trim() ||
+      `${source.shortName} → ${destination.shortName}`;
+
     try {
-      const payload = {
-        routeName: form.routeName.trim(),
-        startLat: parseFloat(form.startLat),
-        startLon: parseFloat(form.startLon),
-        endLat: parseFloat(form.endLat),
-        endLon: parseFloat(form.endLon),
-      };
-      await routeService.saveRoute(payload);
-      setShowForm(false);
-      setForm({
-        routeName: '',
-        startLat: '',
-        startLon: '',
-        endLat: '',
-        endLon: '',
+      await routeService.saveRoute({
+        routeName: name,
+        startLat: source.lat,
+        startLon: source.lon,
+        endLat: destination.lat,
+        endLon: destination.lon,
       });
-      setToast({ type: 'success', message: 'Route saved successfully!' });
+      setShowForm(false);
+      setRouteName('');
+      setSource(null);
+      setDestination(null);
+      setToast({ type: 'success', message: `Route "${name}" saved successfully!` });
       setTimeout(() => setToast(null), 4000);
       fetchRoutes();
     } catch {
@@ -61,7 +64,7 @@ export default function SavedRoutes() {
     <div className="page-container">
       <div className="page-header">
         <h1>Saved Routes</h1>
-        <p>Manage your bookmarked routes and their coordinates</p>
+        <p>Manage your bookmarked routes for air quality tracking</p>
       </div>
 
       {/* Toast */}
@@ -91,39 +94,61 @@ export default function SavedRoutes() {
             <MapPin size={18} />
             Add New Route
           </h2>
-          <form onSubmit={handleAdd} className="saved-route-form-grid">
-            <div className="form-group form-group-wide">
-              <label className="form-label">Route Name</label>
+          <form onSubmit={handleAdd} className="saved-route-form-new">
+            <div className="form-group">
+              <label className="form-label">Route Name (optional)</label>
               <input
-                name="routeName"
                 type="text"
-                value={form.routeName}
-                onChange={handleChange}
+                value={routeName}
+                onChange={(e) => setRouteName(e.target.value)}
                 className="form-input"
-                required
                 placeholder="e.g. Home to Office"
                 id="input-route-name"
               />
             </div>
-            <div className="form-group">
-              <label className="form-label">Start Latitude</label>
-              <input name="startLat" type="number" step="any" value={form.startLat} onChange={handleChange} className="form-input" required placeholder="17.385" />
-            </div>
-            <div className="form-group">
-              <label className="form-label">Start Longitude</label>
-              <input name="startLon" type="number" step="any" value={form.startLon} onChange={handleChange} className="form-input" required placeholder="78.4867" />
-            </div>
-            <div className="form-group">
-              <label className="form-label">End Latitude</label>
-              <input name="endLat" type="number" step="any" value={form.endLat} onChange={handleChange} className="form-input" required placeholder="17.4399" />
-            </div>
-            <div className="form-group">
-              <label className="form-label">End Longitude</label>
-              <input name="endLon" type="number" step="any" value={form.endLon} onChange={handleChange} className="form-input" required placeholder="78.4983" />
+
+            <div className="location-fields-row">
+              <div className="location-field-col">
+                <LocationSearch
+                  label="Source"
+                  placeholder="e.g. Koti, Hyderabad"
+                  value={source}
+                  onChange={setSource}
+                  dotColor="start"
+                  id="saved-source-search"
+                />
+              </div>
+
+              <div className="location-arrow-divider">
+                <Navigation size={16} />
+              </div>
+
+              <div className="location-field-col">
+                <LocationSearch
+                  label="Destination"
+                  placeholder="e.g. Hitech City, Hyderabad"
+                  value={destination}
+                  onChange={setDestination}
+                  dotColor="end"
+                  id="saved-dest-search"
+                />
+              </div>
             </div>
 
+            {formError && (
+              <p className="form-error-message">
+                <AlertCircle size={14} />
+                {formError}
+              </p>
+            )}
+
             <div className="form-submit-row">
-              <button type="submit" className="btn btn-primary btn-lg" id="submit-route-btn">
+              <button
+                type="submit"
+                className="btn btn-primary btn-lg"
+                disabled={!source || !destination}
+                id="submit-route-btn"
+              >
                 <BookmarkCheck size={18} />
                 Save Route
               </button>
@@ -136,7 +161,7 @@ export default function SavedRoutes() {
       {error && (
         <div className="error-banner animate-in">
           <AlertCircle size={16} />
-          <p>{error}</p>
+          <p>{error === 'Network Error' ? 'Backend service unavailable.' : error}</p>
         </div>
       )}
 
@@ -150,7 +175,7 @@ export default function SavedRoutes() {
             <div className="empty-state animate-in">
               <BookmarkCheck size={48} />
               <h3>No saved routes yet</h3>
-              <p>Find a route from the Dashboard and save it, or add one manually above.</p>
+              <p>Find a route from the Dashboard and save it, or add one above.</p>
             </div>
           ) : (
             routes.map((route, idx) => (

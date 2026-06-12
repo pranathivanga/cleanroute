@@ -1,8 +1,51 @@
-import { MapPin, Navigation, Route } from 'lucide-react';
-import { formatNumber } from '../utils/helpers';
+import { useState, useEffect } from 'react';
+import { MapPin, Navigation, Route, Loader2 } from 'lucide-react';
+import { reverseGeocode } from '../services/geocodingService';
 import './RouteCard.css';
 
+/**
+ * RouteCard — displays a saved route with human-readable place names.
+ * Reverse-geocodes coordinates into readable location names.
+ * Users never see raw coordinates.
+ */
 export default function RouteCard({ route }) {
+  const [originName, setOriginName] = useState(null);
+  const [destName, setDestName] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    async function loadNames() {
+      setLoading(true);
+      try {
+        const [origin, dest] = await Promise.all([
+          reverseGeocode(route.startLat, route.startLon),
+          reverseGeocode(route.endLat, route.endLon),
+        ]);
+        if (!cancelled) {
+          setOriginName(origin?.shortName || 'Origin');
+          setDestName(dest?.shortName || 'Destination');
+        }
+      } catch {
+        if (!cancelled) {
+          setOriginName('Origin');
+          setDestName('Destination');
+        }
+      } finally {
+        if (!cancelled) setLoading(false);
+      }
+    }
+
+    if (route.startLat != null && route.startLon != null) {
+      loadNames();
+    } else {
+      setLoading(false);
+    }
+
+    return () => { cancelled = true; };
+  }, [route.startLat, route.startLon, route.endLat, route.endLon]);
+
   return (
     <div className="route-card glass-card animate-in" id={`route-card-${route.id || 'new'}`}>
       <div className="route-card-header">
@@ -23,16 +66,25 @@ export default function RouteCard({ route }) {
             <span className="route-dot end"></span>
           </div>
           <div className="route-endpoints">
-            <span className="route-point">
-              <MapPin size={14} />
-              <span className="coord-label">Origin</span>
-              <span className="coord-value">({formatNumber(route.startLat, 4)}, {formatNumber(route.startLon, 4)})</span>
-            </span>
-            <span className="route-point">
-              <Navigation size={14} />
-              <span className="coord-label">Destination</span>
-              <span className="coord-value">({formatNumber(route.endLat, 4)}, {formatNumber(route.endLon, 4)})</span>
-            </span>
+            {loading ? (
+              <div className="route-loading">
+                <Loader2 size={14} className="route-loading-spin" />
+                <span>Loading locations...</span>
+              </div>
+            ) : (
+              <>
+                <span className="route-point">
+                  <MapPin size={14} />
+                  <span className="coord-label">Origin</span>
+                  <span className="coord-place-name">{originName}</span>
+                </span>
+                <span className="route-point">
+                  <Navigation size={14} />
+                  <span className="coord-label">Destination</span>
+                  <span className="coord-place-name">{destName}</span>
+                </span>
+              </>
+            )}
           </div>
         </div>
       </div>

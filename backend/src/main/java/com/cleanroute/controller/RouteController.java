@@ -20,12 +20,15 @@ public class RouteController {
             @RequestParam("startLon") double startLon,
             @RequestParam("startLat") double startLat,
             @RequestParam("endLon") double endLon,
-            @RequestParam("endLat") double endLat) {
+            @RequestParam("endLat") double endLat,
+            @RequestParam(defaultValue = "driving-car")
+            String profile) {
 
         return routeService.getRoute(
                 startLon,
                 startLat,
                 endLon,
-                endLat);
+                endLat,
+                profile);
     }
 }

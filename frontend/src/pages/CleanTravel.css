@@ -1,3 +1,10 @@
+/* ===== ACTIONS ===== */
+.recommendations-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 1rem;
+}
+
 /* ===== RECOMMENDATIONS GRID ===== */
 .recommendations-grid {
   display: grid;

@@ -2,6 +2,9 @@ import { useState, useCallback } from 'react';
 
 /**
  * Generic hook for async API calls with loading/error state management.
+ * Provides: data, loading, error, execute, reset
+ *
+ * Error messages are user-friendly (not raw stack traces).
  */
 export default function useApi(apiFunc) {
   const [data, setData] = useState(null);
@@ -17,8 +20,14 @@ export default function useApi(apiFunc) {
         setData(response.data);
         return response.data;
       } catch (err) {
+        // Use the user-friendly message from our API interceptor
         const message =
-          err.response?.data?.message || err.message || 'Request failed';
+          err.userMessage ||
+          err.response?.data?.message ||
+          (err.message === 'Network Error'
+            ? 'Backend service unavailable. Please ensure the server is running.'
+            : err.message) ||
+          'Request failed. Please try again.';
         setError(message);
         throw err;
       } finally {

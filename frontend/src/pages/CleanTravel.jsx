@@ -7,8 +7,9 @@ import {
   Sparkles,
   Route,
   AlertTriangle,
+  RefreshCw,
 } from 'lucide-react';
-import { recommendationService } from '../services/routeService';
+import { aqiService } from '../services/routeService';
 import useApi from '../hooks/useApi';
 import LoadingSpinner from '../components/LoadingSpinner';
 import AQICard from '../components/AQICard';
@@ -16,16 +17,22 @@ import { formatNumber, getRecommendationStyle } from '../utils/helpers';
 import './CleanTravel.css';
 
 export default function CleanTravel() {
-  const { data, loading, error, execute: fetchRecommendations } = useApi(() =>
-    recommendationService.getRecommendations()
-  );
+  const {
+    data,
+    loading,
+    error,
+    execute: fetchRecommendations,
+  } = useApi(async () => {
+    // Use the valid backend endpoint: GET /api/aqi-history/clean-travel-window
+    return aqiService.getCleanTravelWindow();
+  });
 
   useEffect(() => {
     fetchRecommendations();
   }, []);
 
-  // data is an array of recommendation objects
-  const recommendations = Array.isArray(data) ? data : [];
+  // Handle both array (recommendations) and single object (clean-travel-window)
+  const recommendations = Array.isArray(data) ? data : data ? [data] : [];
 
   return (
     <div className="page-container">
@@ -37,11 +44,24 @@ export default function CleanTravel() {
       {error && (
         <div className="error-banner animate-in">
           <AlertTriangle size={16} />
-          <p>{error}</p>
+          <p>{error === 'Network Error' ? 'Backend service unavailable. Please ensure the server is running.' : error}</p>
         </div>
       )}
 
       {loading && <LoadingSpinner text="Fetching travel recommendations..." />}
+
+      {!loading && !error && (
+        <div className="recommendations-actions">
+          <button
+            className="btn btn-secondary btn-sm"
+            onClick={() => fetchRecommendations()}
+            id="refresh-recommendations"
+          >
+            <RefreshCw size={14} />
+            Refresh
+          </button>
+        </div>
+      )}
 
       {!loading && recommendations.length > 0 && (
         <div className="recommendations-grid">
@@ -107,15 +127,15 @@ export default function CleanTravel() {
                   </div>
                 </div>
 
-                {/* AQI Visual */}
+                {/* AQI Visual + Advice */}
                 <div className="rec-footer">
                   <AQICard aqi={rec.aqi} size="sm" />
                   <p className="rec-advice">
                     {rec.recommendation === 'GOOD_TO_TRAVEL'
                       ? 'Air quality is excellent. Safe for outdoor commuting and exercise!'
-                      : rec.recommendation === 'MODERATE'
+                      : (rec.recommendation === 'MODERATE' || rec.recommendation === 'CAUTION')
                       ? 'Air quality is acceptable. Sensitive individuals should limit prolonged outdoor exertion.'
-                      : rec.recommendation === 'AVOID_TRAVEL'
+                      : (rec.recommendation === 'AVOID_TRAVEL' || rec.recommendation === 'AVOID_IF_POSSIBLE')
                       ? 'Air quality is poor. Avoid outdoor activities and use indoor transport if possible.'
                       : 'Check current conditions before planning your travel.'}
                   </p>

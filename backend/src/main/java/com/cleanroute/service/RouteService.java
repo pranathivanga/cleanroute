@@ -32,10 +32,17 @@ public class RouteService {
             double startLon,
             double startLat,
             double endLon,
-            double endLat) {
+            double endLat,
+            String profile) {
+
+        if (profile == null || profile.isBlank()) {
+            profile = "driving-car";
+        }
 
         String url =
-                "https://api.openrouteservice.org/v2/directions/driving-car?start="
+                "https://api.openrouteservice.org/v2/directions/"
+                        + profile
+                        + "?start="
                         + startLon + "," + startLat
                         + "&end="
                         + endLon + "," + endLat;

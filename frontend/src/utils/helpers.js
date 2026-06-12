@@ -87,11 +87,25 @@ export function getRecommendationStyle(recommendation) {
       label: 'Moderate',
       emoji: '⚠️',
     },
+    CAUTION: {
+      color: '#f59e0b',
+      bg: 'rgba(245, 158, 11, 0.12)',
+      border: 'rgba(245, 158, 11, 0.3)',
+      label: 'Caution',
+      emoji: '⚠️',
+    },
     AVOID_TRAVEL: {
       color: '#ef4444',
       bg: 'rgba(239, 68, 68, 0.12)',
       border: 'rgba(239, 68, 68, 0.3)',
       label: 'Avoid Travel',
+      emoji: '🚫',
+    },
+    AVOID_IF_POSSIBLE: {
+      color: '#ef4444',
+      bg: 'rgba(239, 68, 68, 0.12)',
+      border: 'rgba(239, 68, 68, 0.3)',
+      label: 'Avoid If Possible',
       emoji: '🚫',
     },
   };

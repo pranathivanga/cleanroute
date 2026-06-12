@@ -12,7 +12,7 @@ const navItems = [
   { path: '/', label: 'Dashboard', icon: LayoutDashboard },
   { path: '/saved-routes', label: 'Saved Routes', icon: BookmarkCheck },
   { path: '/aqi-history', label: 'AQI History', icon: BarChart3 },
-  { path: '/clean-travel', label: 'Recommendations', icon: Sparkles },
+  { path: '/clean-travel', label: 'Clean Travel', icon: Sparkles },
 ];
 
 export default function Sidebar({ isOpen, onClose }) {

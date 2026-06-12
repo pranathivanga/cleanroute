@@ -1,5 +1,17 @@
 import API from './api';
 
+/**
+ * Route service — all route-related API calls go through Spring Boot.
+ * No direct calls to external routing/weather APIs.
+ *
+ * Valid backend endpoints:
+ *   GET  /api/routes
+ *   GET  /api/weather
+ *   GET  /api/saved-routes
+ *   POST /api/saved-routes
+ *   GET  /api/aqi-history
+ *   GET  /api/aqi-history/clean-travel-window
+ */
 export const routeService = {
   /**
    * Calculate route with AQI data.
@@ -17,25 +29,37 @@ export const routeService = {
   getSavedRoutes: () => API.get('/api/saved-routes'),
 
   /**
-   * Save a new route (name + coordinates only, backend computes AQI).
+   * Save a new route (name + coordinates).
    * POST /api/saved-routes
    * Body: { routeName, startLat, startLon, endLat, endLon }
    */
   saveRoute: (routeData) => API.post('/api/saved-routes', routeData),
 };
 
+/**
+ * Weather service — weather data from Spring Boot.
+ */
+export const weatherService = {
+  /**
+   * Get current weather data.
+   * GET /api/weather
+   */
+  getWeather: () => API.get('/api/weather'),
+};
+
+/**
+ * AQI History service — all AQI-related API calls go through Spring Boot.
+ */
 export const aqiService = {
   /**
    * Get historical AQI records.
    * GET /api/aqi-history
    */
   getHistory: () => API.get('/api/aqi-history'),
-};
 
-export const recommendationService = {
   /**
-   * Get route recommendations with travel advisories.
-   * GET /api/recommendations
+   * Get clean travel window recommendation.
+   * GET /api/aqi-history/clean-travel-window
    */
-  getRecommendations: () => API.get('/api/recommendations'),
+  getCleanTravelWindow: () => API.get('/api/aqi-history/clean-travel-window'),
 };

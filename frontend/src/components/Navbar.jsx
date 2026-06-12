@@ -1,4 +1,4 @@
-import { Menu, Bell, Search } from 'lucide-react';
+import { Menu, Bell } from 'lucide-react';
 import './Navbar.css';
 
 export default function Navbar({ onMenuClick }) {
@@ -8,15 +8,6 @@ export default function Navbar({ onMenuClick }) {
         <button className="navbar-menu-btn" onClick={onMenuClick} id="menu-toggle">
           <Menu size={20} />
         </button>
-        <div className="navbar-search">
-          <Search size={16} className="search-icon" />
-          <input
-            type="text"
-            placeholder="Search routes, cities..."
-            className="search-input"
-            id="search-input"
-          />
-        </div>
       </div>
 
       <div className="navbar-right">
